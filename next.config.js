@@ -1,8 +1,11 @@
 const path = require('path')
+const withImages = require('next-images')
+const withCSS = require('@zeit/next-css')
+
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const Dotenv = require('dotenv-webpack')
 
-module.exports = {
+module.exports = withImages(withCSS({
   distDir: '../.next',
   webpack: (config, {dev, isServer}) => {
     config.resolve = {
@@ -10,6 +13,8 @@ module.exports = {
         '@': path.resolve(process.cwd(), 'src')
       }
     }
+
+    // module
 
     if (dev) {
       config.module.rules.push({
@@ -20,6 +25,8 @@ module.exports = {
         use: ['eslint-loader']
       })
     }
+
+    // plugins
 
     if (process.env.analyzer) {
       config.plugins.push(new BundleAnalyzerPlugin({
@@ -35,4 +42,4 @@ module.exports = {
 
     return config
   }
-}
+}))

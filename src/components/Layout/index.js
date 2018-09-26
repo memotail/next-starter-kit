@@ -1,11 +1,28 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import { withTheme } from 'theming'
 
-export default class Layout extends React.PureComponent {
+class Layout extends React.PureComponent {
   render () {
+    // const {
+    //   theme
+    // } = this.props
+
     return (
-      <div>
+      <div className="layout">
         {this.props.children}
+        <style jsx>{`
+          .layout {
+            display: flex;
+          }
+        `}</style>
       </div>
     )
   }
 }
+
+Layout.propTypes = {
+  theme: PropTypes.object
+}
+
+export default withTheme(Layout)

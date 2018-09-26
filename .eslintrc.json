@@ -1,9 +1,20 @@
 {
-    "extends": [
-      "standard",
-      "plugin:react/recommended"
-    ],
-    "rules": {
-      "react/prop-types": [1, {"ignore": ["children", "onClick", "className", "router", "dispatch"]}]
-    }
+  "parser": "babel-eslint",
+  "extends": [
+    "standard",
+    "plugin:react/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
+  "plugins": [
+    "react",
+    "jsx-a11y"
+  ],
+  "rules": {
+    "react/prop-types": [1, {"ignore": ["children", "onClick", "className", "router", "dispatch"]}]
+  }
 }
